@@ -31,7 +31,7 @@ def verify_calculate_lt(n : int, x : int, d : int, a : int) -> int :
 
 # calculating the total
 def total() -> int :
-    return sum(a=3, d=3, x=10000) + sum(a=5, d=5, x=10000) - sum(a=15, d=15, x=10000)
+    return sum(a=3, d=3, x=10000) + sum(a=5, d=5, x=10000) - sum(a=15, d=15, x=1000)
 
 print(total())
 print(time.time() - run_time)
