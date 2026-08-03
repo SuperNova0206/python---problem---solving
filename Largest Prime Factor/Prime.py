@@ -1,20 +1,29 @@
 import math
+from typing import Tuple
 
-PrimeFactors : list = []
 
-def PollardRhoAlgorithm(n : int ) -> int :
+# polynomial Rho f(x) = x^2 + 1, f(f(y))
 
-    # initiative values 
-    BeginX : int = 2
-    BeginY : int = 2
+def PolynomialRho() -> Tuple[int, int] :
+    x : int = 2
 
-    # polynomial function for x 
-    PolynomialFunctionX : int = BeginX ** 2 + 1
+    x = x ** 2 + 1 
+    y = x ** 2 + 1
 
-    # polynomial function for y 
-    PolynomialFunctionY : int = PolynomialFunctionX ** 2 + 1
+    return x, y
 
-def GreaterDivisableCommon_GDC(n : int, x : int, y : int) -> int :
+def GreaterCommonDivisor(number : int) -> Tuple[int, int] :
 
-    gdc : int = n % abs(x - y)
+    x, y = PolynomialRho()
 
+    # calculating the gdc 
+    gdc : int = 0
+    Devidend : int = number
+    Divisor : int = abs(x - y)
+    Reminder = Devidend % Divisor
+
+    while Divisor % Reminder != 0 : 
+        Devidend = Divisor 
+        Divisor = Reminder
+
+        
