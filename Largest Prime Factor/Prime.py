@@ -2,28 +2,43 @@ import math
 from typing import Tuple
 
 
-# polynomial Rho f(x) = x^2 + 1, f(f(y))
+# gdc 
+def gdc(divisor : int, n) -> int :
 
-def PolynomialRho() -> Tuple[int, int] :
-    x : int = 2
+    dividend : int = n // divisor
+    reminder : int = n - dividend * divisor
 
-    x = x ** 2 + 1 
-    y = x ** 2 + 1
+    while not reminder:
+        dividend, reminder = divisor, divisor % reminder
+        if divisor / reminder == 0 and n / reminder == 0:
+            return reminder
+        dividend, reminder = reminder, dividend % reminder
+    return reminder
 
-    return x, y
 
-def GreaterCommonDivisor(number : int) -> Tuple[int, int] :
+# pollard's rho algorithem
+def PollardRhoAlgorithem(n : int) -> int :
 
-    x, y = PolynomialRho()
+    x : int = 2 ** 2 + 1 % n
+    y = x ** 2 + 1 % n
 
-    # calculating the gdc 
-    gdc : int = 0
-    Devidend : int = number
-    Divisor : int = abs(x - y)
-    Reminder = Devidend % Divisor
+    reminder = gdc(abs(x - y), n)
 
-    while Divisor % Reminder != 0 : 
-        Devidend = Divisor 
-        Divisor = Reminder
+    if not n % reminder: 
+        return reminder
+    elif n % reminder:
+        while n % reminder:
+            x = y % n
+            y = x ** 2 + 1 % n
+            reminder = gdc(abs(y))
+
+print(gdc(21, 1885))
+
+
+
+
+
+
+
 
         
