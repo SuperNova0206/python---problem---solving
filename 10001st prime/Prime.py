@@ -17,8 +17,6 @@ print(number - 1)
 
 # Sieve of Eratosthenes 
 class Solution :
-    def __init__(self, term : int) :
-        self.term = term
 
     def sieve_eratosthnes(self) -> int :
         start : int = 100
@@ -35,7 +33,7 @@ class Solution :
                 primes.append(i)
         return primes
 
-Primes = Solution(1001)
+Primes = Solution()
 print(Primes.sieve_eratosthnes())
 
         
